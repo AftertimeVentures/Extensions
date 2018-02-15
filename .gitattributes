@@ -1,1 +1,2 @@
 .gitmodules merge=ours
+testfile.txt merge=ours
