@@ -15,107 +15,107 @@ namespace Aftertime.Utilities.Reflection
         [Theory]
         //
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_instance_methods__none_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_instance_methods__none_annotated)
         , BindingFlags.Default
         , 0)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_instance_methods__all_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_instance_methods__all_annotated)
         , BindingFlags.Default
         , 0)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_instance_methods__public_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_instance_methods__public_annotated)
         , BindingFlags.Default
         , 0)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_instance_methods__private_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_instance_methods__private_annotated)
         , BindingFlags.Default
         , 0)]
         //
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_instance_methods__none_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_instance_methods__none_annotated)
         , BindingFlags.Instance | BindingFlags.Public
         , 0)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_instance_methods__all_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_instance_methods__all_annotated)
         , BindingFlags.Instance | BindingFlags.Public
         , 1)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_instance_methods__public_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_instance_methods__public_annotated)
         , BindingFlags.Instance | BindingFlags.Public
         , 1)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_instance_methods__private_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_instance_methods__private_annotated)
         , BindingFlags.Instance | BindingFlags.Public
         , 0)]
         //
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_instance_methods__none_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_instance_methods__none_annotated)
         , BindingFlags.Static | BindingFlags.Public
         , 0)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_instance_methods__all_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_instance_methods__all_annotated)
         , BindingFlags.Static | BindingFlags.Public
         , 0)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_instance_methods__public_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_instance_methods__public_annotated)
         , BindingFlags.Static | BindingFlags.Public
         , 0)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_instance_methods__private_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_instance_methods__private_annotated)
         , BindingFlags.Static | BindingFlags.Public
         , 0)]
         //
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_static_methods__none_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_static_methods__none_annotated)
         , BindingFlags.Default
         , 0)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_static_methods__all_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_static_methods__all_annotated)
         , BindingFlags.Default
         , 0)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_static_methods__public_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_static_methods__public_annotated)
         , BindingFlags.Default
         , 0)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_static_methods__private_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_static_methods__private_annotated)
         , BindingFlags.Default
         , 0)]
         //
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_static_methods__none_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_static_methods__none_annotated)
         , BindingFlags.Instance | BindingFlags.Public
         , 0)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_static_methods__all_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_static_methods__all_annotated)
         , BindingFlags.Instance | BindingFlags.Public
         , 0)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_static_methods__public_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_static_methods__public_annotated)
         , BindingFlags.Instance | BindingFlags.Public
         , 0)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_static_methods__private_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_static_methods__private_annotated)
         , BindingFlags.Instance | BindingFlags.Public
         , 0)]
         //
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_static_methods__none_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_static_methods__none_annotated)
         , BindingFlags.Static | BindingFlags.Public
         , 0)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_static_methods__all_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_static_methods__all_annotated)
         , BindingFlags.Static | BindingFlags.Public
         , 1)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_static_methods__public_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_static_methods__public_annotated)
         , BindingFlags.Static | BindingFlags.Public
         , 1)]
         [InlineData
-        (typeof(SampleClasses.InternalClass__with_public_and_private_static_methods__private_annotated)
+        (typeof(SamplesWithMethodAnnotations.InternalClass__with_public_and_private_static_methods__private_annotated)
         , BindingFlags.Static | BindingFlags.Public
         , 0)]
-        public void GetAnnotatedMethods__DefaultBindingFlags(Type type, BindingFlags bindingFlags, int expectedNumberOfMethods)
+        public void GetAnnotatedMethods_Tests(Type type, BindingFlags bindingFlags, int expectedNumberOfMethods)
         {
             //  Prepare
 

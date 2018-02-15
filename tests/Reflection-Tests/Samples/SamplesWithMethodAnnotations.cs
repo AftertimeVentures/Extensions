@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Aftertime.Utilities.Reflection.Samples
 {
-    internal static class SampleClasses
+    internal static class SamplesWithMethodAnnotations
     {
         internal class InternalClass__with_public_and_private_instance_methods__none_annotated
         {
