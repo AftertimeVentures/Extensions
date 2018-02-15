@@ -3,7 +3,7 @@
 ################################################################################
 
 /.vs
+/!ws
 /tests/Reflection-Tests/obj
-/tests/Reflection-Tests/bin
 /libraries/Reflection/obj
-/libraries/Reflection/bin
+

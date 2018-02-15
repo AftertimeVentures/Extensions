@@ -1,4 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(SolutionDir)@utomation\build\common.props" />
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
@@ -6,6 +7,9 @@
     <IsPackable>false</IsPackable>
 
     <RootNamespace>Aftertime.Utilities.Reflection</RootNamespace>
+
+    <Configurations>Debug;Release;Release+Packed;Release+Packed+Signed</Configurations>
+    <BinaryOutputType>tests</BinaryOutputType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,4 +22,5 @@
     <ProjectReference Include="..\..\libraries\Reflection\Aftertime.Utilities.Reflection.csproj" />
   </ItemGroup>
 
+  <Import Project="$(SolutionDir)@utomation\build\common.targets" />
 </Project>

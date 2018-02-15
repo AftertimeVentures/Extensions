@@ -1,0 +1,4 @@
+[submodule "@utomation"]
+	path = @utomation
+	url = https://aftertime.visualstudio.com/Utilities/_git/Automation
+	branch = lead
