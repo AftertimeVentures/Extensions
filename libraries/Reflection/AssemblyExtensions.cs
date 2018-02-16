@@ -4,7 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Aftertime.Utilities.Reflection
+namespace Aftertime.Extensions.Reflection
 {
     public static class AssemblyExtensions
     {

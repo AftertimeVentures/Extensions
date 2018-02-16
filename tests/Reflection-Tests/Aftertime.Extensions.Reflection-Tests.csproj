@@ -6,7 +6,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <RootNamespace>Aftertime.Utilities.Reflection</RootNamespace>
+    <RootNamespace>Aftertime.Extensions.Reflection</RootNamespace>
 
     <Configurations>Debug;Release;Release+Packed;Release+Packed+Signed</Configurations>
     <BinaryOutputType>tests</BinaryOutputType>
@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\libraries\Reflection\Aftertime.Utilities.Reflection.csproj" />
+    <ProjectReference Include="..\..\libraries\Reflection\Aftertime.Extensions.Reflection.csproj" />
   </ItemGroup>
 
   <Import Project="$(SolutionDir)@utomation\build\common.targets" />
