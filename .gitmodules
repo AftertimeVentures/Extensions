@@ -1,4 +1,8 @@
 [submodule "@utomation"]
 	path = @utomation
-	url = https://aftertime.visualstudio.com/Utilities/_git/Automation
-	branch = lead
+	url = https://aftertime.visualstudio.com/Extensions/_git/Automation
+	branch = master
+[submodule ".attributes"]
+	path = .attributes
+	url = https://aftertime.visualstudio.com/Extensions/_git/Attributes
+	branch = master
