@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Aftertime.Utilities.Reflection
+namespace Aftertime.Extensions.Reflection
 {
     public sealed class AnnotatedMethodInfo<TAttribute>
         where TAttribute : Attribute
