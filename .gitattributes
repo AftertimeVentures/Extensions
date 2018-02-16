@@ -1,1 +1,2 @@
-.gitmodules merge=ours
+@uatomation merge=ours
+.* merge=ours
