@@ -28,10 +28,38 @@ namespace Aftertime.Extensions.Reflection
             where TAttribute : Attribute
         {
             return type.GetEvents(bindingFlags)
-                .Select(mi => new AnnotatedEventInfo<TAttribute>()
+                .Select(ei => new AnnotatedEventInfo<TAttribute>()
+                {
+                    Attribute = ei.GetCustomAttribute<TAttribute>(),
+                    EventInfo = ei,
+                })
+                .Where(aei => aei.Attribute != null);
+        }
+
+        public static IEnumerable<AnnotatedPropertyInfo<TAttribute>> GetAnnotatedProperties<TAttribute>
+            (this Type type
+            , BindingFlags bindingFlags = BindingFlags.Default)
+            where TAttribute : Attribute
+        {
+            return type.GetProperties(bindingFlags)
+                .Select(pi => new AnnotatedPropertyInfo<TAttribute>()
+                {
+                    Attribute = pi.GetCustomAttribute<TAttribute>(),
+                    PropertyInfo = pi,
+                })
+                .Where(api => api.Attribute != null);
+        }
+
+        public static IEnumerable<AnnotatedMemberInfo<TAttribute>> GetAnnotatedMembers<TAttribute>
+            ( this Type type
+            , BindingFlags bindingFlags = BindingFlags.Default )
+            where TAttribute : Attribute
+        {
+            return type.GetProperties(bindingFlags)
+                .Select(mi => new AnnotatedMemberInfo<TAttribute>()
                 {
                     Attribute = mi.GetCustomAttribute<TAttribute>(),
-                    EventInfo = mi,
+                    MemberInfo = mi,
                 })
                 .Where(ami => ami.Attribute != null);
         }
