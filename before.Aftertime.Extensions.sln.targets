@@ -1,4 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project>
+  <PropertyGroup>
+    <AttributesDir>$(MSBuildThisFileDirectory).attributes\</AttributesDir>
+  </PropertyGroup>
   <Import Project="$(MSBuildThisFileDirectory)@utomation\build\before.solution.targets"/>
 </Project>
