@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Aftertime.Utilities.Reflection.Samples
+namespace Aftertime.Extensions.Reflection.Samples
 {
     internal static class SamplesWithTypeAnnotations
     {
