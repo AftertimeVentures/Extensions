@@ -6,9 +6,9 @@ using System.Text;
 
 using Xunit;
 
-using Aftertime.Utilities.Reflection.Samples;
+using Aftertime.Extensions.Reflection.Samples;
 
-namespace Aftertime.Utilities.Reflection
+namespace Aftertime.Extensions.Reflection
 {
     public class TypeExtensionsTests
     {
