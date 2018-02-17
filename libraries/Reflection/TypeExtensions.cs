@@ -21,5 +21,19 @@ namespace Aftertime.Extensions.Reflection
                 })
                 .Where(ami => ami.Attribute != null);
         }
+
+        public static IEnumerable<AnnotatedEventInfo<TAttribute>> GetAnnotatedEvents<TAttribute>
+            ( this Type type
+            , BindingFlags bindingFlags = BindingFlags.Default )
+            where TAttribute : Attribute
+        {
+            return type.GetEvents(bindingFlags)
+                .Select(mi => new AnnotatedEventInfo<TAttribute>()
+                {
+                    Attribute = mi.GetCustomAttribute<TAttribute>(),
+                    EventInfo = mi,
+                })
+                .Where(ami => ami.Attribute != null);
+        }
     }
 }
