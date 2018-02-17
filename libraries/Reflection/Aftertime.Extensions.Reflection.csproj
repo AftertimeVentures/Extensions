@@ -6,6 +6,14 @@
     <Configurations>Debug;Release;Release+Packed;Release+Packed+Signed</Configurations>
     <BinaryOutputType>library</BinaryOutputType>
   </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release+Packed|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release+Packed+Signed|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;PACKED;SIGNED;NETSTANDARD2_0</DefineConstants>
+  </PropertyGroup>
 
   <Import Project="$(SolutionDir)@utomation\build\common.targets" />
 </Project>

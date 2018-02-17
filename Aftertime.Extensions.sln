@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{0BB85A68-5D39-4C09-84B6-7BE9E50D832A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aftertime.Extensions.Reflection", "libraries\Reflection\Aftertime.Extensions.Reflection.csproj", "{B363B114-9040-40A4-AD66-E3A901B20230}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aftertime.Extensions.Reflection", "libraries\Reflection\Aftertime.Extensions.Reflection.csproj", "{B363B114-9040-40A4-AD66-E3A901B20230}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E982110D-7F38-42BC-AB75-88171EC63654}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aftertime.Extensions.Reflection-Tests", "tests\Reflection-Tests\Aftertime.Extensions.Reflection-Tests.csproj", "{D2859707-2EFE-404B-8952-A99BE01D2E87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aftertime.Extensions.Reflection-Tests", "tests\Reflection-Tests\Aftertime.Extensions.Reflection-Tests.csproj", "{D2859707-2EFE-404B-8952-A99BE01D2E87}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "@utomation", "@utomation", "{79D0648E-DE2F-472A-9416-05E8C5FFD8BC}"
 	ProjectSection(SolutionItems) = preProject
@@ -20,6 +20,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4746318C
 	ProjectSection(SolutionItems) = preProject
 		@utomation\build\common.props = @utomation\build\common.props
 		@utomation\build\common.targets = @utomation\build\common.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".attributes", ".attributes", "{CA7EBE2B-7D60-485B-9030-39AA2E6F2B93}"
+	ProjectSection(SolutionItems) = preProject
+		.attributes\build.xml = .attributes\build.xml
+		.attributes\company.xml = .attributes\company.xml
+		.attributes\product.xml = .attributes\product.xml
 	EndProjectSection
 EndProject
 Global

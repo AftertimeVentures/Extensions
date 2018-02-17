@@ -12,6 +12,14 @@
     <BinaryOutputType>tests</BinaryOutputType>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release+Packed|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;PACKED;NETCOREAPP2_0</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release+Packed+Signed|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;PACKED;SIGNED;NETCOREAPP2_0</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
     <PackageReference Include="xunit" Version="2.2.0" />
