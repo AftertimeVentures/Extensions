@@ -71,8 +71,8 @@ namespace Aftertime.Extensions.Reflection
                         expressions.Item1,
                         expressions.Item2,
                         expressions.Item3,
-                        1,
-                        1,
+                        numbers.Item1,
+                        numbers.Item2,
                     };
                 }
             }
