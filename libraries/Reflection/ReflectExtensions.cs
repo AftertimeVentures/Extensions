@@ -8,9 +8,9 @@ namespace Aftertime.Extensions.Reflection
 {
     public static class ReflectExtensions
     {
-        public static IEnumerable<AnnotatedMethodInfo<TAttribute>> GetAnnotatedMethods<TAttribute>
-            ( this IReflect reflect
-            , BindingFlags bindingFlags = BindingFlags.Default )
+        public static AnnotatedMethodInfo<TAttribute>[] GetAnnotatedMethods<TAttribute>
+            (this IReflect reflect
+            , BindingFlags bindingFlags = BindingFlags.Default)
             where TAttribute : Attribute
         {
             return reflect.GetMethods(bindingFlags)
@@ -19,12 +19,13 @@ namespace Aftertime.Extensions.Reflection
                     Attribute = mi.GetCustomAttribute<TAttribute>(),
                     MethodInfo = mi,
                 })
-                .Where(ami => ami.Attribute != null);
+                .Where(ami => ami.Attribute != null)
+                .ToArray();
         }
 
-        public static IEnumerable<AnnotatedPropertyInfo<TAttribute>> GetAnnotatedProperties<TAttribute>
-            ( this IReflect reflect
-            , BindingFlags bindingFlags = BindingFlags.Default )
+        public static AnnotatedPropertyInfo<TAttribute>[] GetAnnotatedProperties<TAttribute>
+            (this IReflect reflect
+            , BindingFlags bindingFlags = BindingFlags.Default)
             where TAttribute : Attribute
         {
             return reflect.GetProperties(bindingFlags)
@@ -33,12 +34,13 @@ namespace Aftertime.Extensions.Reflection
                     Attribute = pi.GetCustomAttribute<TAttribute>(),
                     PropertyInfo = pi,
                 })
-                .Where(ami => ami.Attribute != null);
+                .Where(ami => ami.Attribute != null)
+                .ToArray();
         }
 
-        public static IEnumerable<AnnotatedFieldInfo<TAttribute>> GetAnnotatedFields<TAttribute>
-            ( this IReflect reflect
-            , BindingFlags bindingFlags = BindingFlags.Default )
+        public static AnnotatedFieldInfo<TAttribute>[] GetAnnotatedFields<TAttribute>
+            (this IReflect reflect
+            , BindingFlags bindingFlags = BindingFlags.Default)
             where TAttribute : Attribute
         {
             return reflect.GetFields(bindingFlags)
@@ -47,7 +49,8 @@ namespace Aftertime.Extensions.Reflection
                     Attribute = fi.GetCustomAttribute<TAttribute>(),
                     FieldInfo = fi,
                 })
-                .Where(afi => afi.Attribute != null);
+                .Where(afi => afi.Attribute != null)
+                .ToArray();
         }
     }
 }
