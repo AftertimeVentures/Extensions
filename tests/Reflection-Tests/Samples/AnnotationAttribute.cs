@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Aftertime.Extensions.Reflection.Samples
 {
-    internal class AnnotationAttribute
+    public class AnnotationAttribute
         : Attribute
     {
     }
