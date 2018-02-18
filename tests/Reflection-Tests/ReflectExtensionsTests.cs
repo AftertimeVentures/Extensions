@@ -15,45 +15,70 @@ namespace Aftertime.Extensions.Reflection
     public class ReflectExtensionsTests
     {
         [Theory]
-        [InlineData(0, 0)]
-        [InlineData(1, 0)]
-        [InlineData(0, 1)]
-        [InlineData(1, 1)]
-        [InlineData(2, 1)]
-        [InlineData(1, 2)]
-        [InlineData(2, 2)]
-        public void GetAnnotatedMethods_Baseline(int numberOfAnnotatedMethods, int numberOfNonAnnotatedMethods)
+        [MemberData(nameof(_getData))]
+        public void GetAnnotatedFields_Baseline_Experimental(Type type, Expression memberSelectorExpr, Expression methodUnderTestDelegate,int numberOfAnnotatedMethods, int numberOfNonAnnotatedMethods)
         {
-            Run_GetAnnotated_X_BaselineTest(r => r.GetMethods(It.IsAny<BindingFlags>()), (r, bf) => r.GetAnnotatedMethods<AnnotationAttribute>(bf), numberOfAnnotatedMethods, numberOfNonAnnotatedMethods);
+            GetType().GetMethod(nameof(Run_GetAnnotated_X_BaselineTest), BindingFlags.NonPublic | BindingFlags.Instance)
+                .MakeGenericMethod(type)
+                .Invoke(this, new object[] { memberSelectorExpr, methodUnderTestDelegate, numberOfAnnotatedMethods, numberOfNonAnnotatedMethods });
         }
 
-        [Theory]
-        [InlineData(0, 0)]
-        [InlineData(1, 0)]
-        [InlineData(0, 1)]
-        [InlineData(1, 1)]
-        [InlineData(2, 1)]
-        [InlineData(1, 2)]
-        [InlineData(2, 2)]
-        public void GetAnnotatedProperties_Baseline(int numberOfAnnotatedMethods, int numberOfNonAnnotatedMethods)
+        public static IEnumerable<Tuple<int, int>> _getNumberOfMembersPairs()
         {
-            Run_GetAnnotated_X_BaselineTest(r => r.GetProperties(It.IsAny<BindingFlags>()), (r, bf) => r.GetAnnotatedProperties<AnnotationAttribute>(bf), numberOfAnnotatedMethods, numberOfNonAnnotatedMethods);
+            yield return new Tuple<int, int>(0, 0);
+            yield return new Tuple<int, int>(1, 0);
+            yield return new Tuple<int, int>(0, 1);
+            yield return new Tuple<int, int>(1, 1);
+            yield return new Tuple<int, int>(2, 1);
+            yield return new Tuple<int, int>(1, 2);
+            yield return new Tuple<int, int>(2, 2);
         }
 
-        [Theory]
-        [InlineData(0, 0)]
-        [InlineData(1, 0)]
-        [InlineData(0, 1)]
-        [InlineData(1, 1)]
-        [InlineData(2, 1)]
-        [InlineData(1, 2)]
-        [InlineData(2, 2)]
-        public void GetAnnotatedFields_Baseline(int numberOfAnnotatedMethods, int numberOfNonAnnotatedMethods)
+        public static IEnumerable<Tuple<Type, Expression, Expression>> _getTestExpressionTuples()
         {
-            Run_GetAnnotated_X_BaselineTest(r => r.GetFields(It.IsAny<BindingFlags>()), (r, bf) => r.GetAnnotatedFields<AnnotationAttribute>(bf), numberOfAnnotatedMethods, numberOfNonAnnotatedMethods);
+            ParameterExpression parameterReflect = Expression.Parameter(typeof(IReflect));
+            ParameterExpression parameterBindingFlags = Expression.Parameter(typeof(BindingFlags));
+
+            yield return new Tuple<Type, Expression, Expression>(
+                typeof(FieldInfo),
+                Expression.Lambda(typeof(Func<IReflect, FieldInfo[]>), Expression.Call(Expression.Parameter(typeof(IReflect)), typeof(IReflect).GetMethod(nameof(IReflect.GetFields)), Expression.Call(typeof(It).GetMethod(nameof(It.IsAny)).MakeGenericMethod(typeof(BindingFlags)))), Expression.Parameter(typeof(IReflect))),
+                Expression.Lambda(typeof(Func<IReflect, BindingFlags, AnnotatedMemberInfo<AnnotationAttribute>[]>), Expression.Call(typeof(ReflectExtensions).GetMethod(nameof(ReflectExtensions.GetAnnotatedFields)).MakeGenericMethod(typeof(AnnotationAttribute)), parameterReflect, parameterBindingFlags), parameterReflect, parameterBindingFlags)
+            );
+
+            yield return new Tuple<Type, Expression, Expression>(
+                typeof(MethodInfo),
+                Expression.Lambda(typeof(Func<IReflect, MethodInfo[]>), Expression.Call(Expression.Parameter(typeof(IReflect)), typeof(IReflect).GetMethod(nameof(IReflect.GetMethods)), Expression.Call(typeof(It).GetMethod(nameof(It.IsAny)).MakeGenericMethod(typeof(BindingFlags)))), Expression.Parameter(typeof(IReflect))),
+                Expression.Lambda(typeof(Func<IReflect, BindingFlags, AnnotatedMemberInfo<AnnotationAttribute>[]>), Expression.Call(typeof(ReflectExtensions).GetMethod(nameof(ReflectExtensions.GetAnnotatedMethods)).MakeGenericMethod(typeof(AnnotationAttribute)), parameterReflect, parameterBindingFlags), parameterReflect, parameterBindingFlags)
+            );
+
+            yield return new Tuple<Type, Expression, Expression>(
+                typeof(PropertyInfo),
+                Expression.Lambda(typeof(Func<IReflect, PropertyInfo[]>), Expression.Call(Expression.Parameter(typeof(IReflect)), typeof(IReflect).GetMethod(nameof(IReflect.GetProperties)), Expression.Call(typeof(It).GetMethod(nameof(It.IsAny)).MakeGenericMethod(typeof(BindingFlags)))), Expression.Parameter(typeof(IReflect))),
+                Expression.Lambda(typeof(Func<IReflect, BindingFlags, AnnotatedMemberInfo<AnnotationAttribute>[]>), Expression.Call(typeof(ReflectExtensions).GetMethod(nameof(ReflectExtensions.GetAnnotatedProperties)).MakeGenericMethod(typeof(AnnotationAttribute)), parameterReflect, parameterBindingFlags), parameterReflect, parameterBindingFlags)
+            );
         }
 
-        private void Run_GetAnnotated_X_BaselineTest<T>(Expression<Func<IReflect, T[]>> memberSelectorExpr, Func<IReflect, BindingFlags, AnnotatedMemberInfo<AnnotationAttribute>[]> methodUnderTest, int numberOfAnnotatedMembers, int numberOfNonAnnotatedMembers)
+        public static IEnumerable<object[]> _getData()
+        {
+            foreach (Tuple<Type, Expression, Expression> expressions in _getTestExpressionTuples())
+            {
+                ParameterExpression parameterReflect = Expression.Parameter(typeof(IReflect));
+                ParameterExpression parameterBindingFlags = Expression.Parameter(typeof(BindingFlags));
+
+                foreach (Tuple<int, int> numbers in _getNumberOfMembersPairs())
+                {
+                    yield return new object[] {
+                        expressions.Item1,
+                        expressions.Item2,
+                        expressions.Item3,
+                        numbers.Item1,
+                        numbers.Item2,
+                    };
+                }
+            }
+        }
+
+        private void Run_GetAnnotated_X_BaselineTest<T>(Expression<Func<IReflect, T[]>> memberSelectorExpr, Expression<Func<IReflect, BindingFlags, AnnotatedMemberInfo<AnnotationAttribute>[]>> methodUnderTest, int numberOfAnnotatedMembers, int numberOfNonAnnotatedMembers)
             where T: MemberInfo
         {
             //  Prepare
@@ -76,7 +101,7 @@ namespace Aftertime.Extensions.Reflection
             Assert.Equal(numberOfNonAnnotatedMembers, members.Count(mi => mi.GetCustomAttribute<AnnotationAttribute>() == null));
 
             //  Perform
-            IEnumerable<AnnotatedMemberInfo<AnnotationAttribute>> annotatedMembers = methodUnderTest(reflectMock.Object, bindingFlags);
+            IEnumerable<AnnotatedMemberInfo<AnnotationAttribute>> annotatedMembers = methodUnderTest.Compile().Invoke(reflectMock.Object, bindingFlags);
 
             //  Post-validate
             Assert.NotNull(actualBindingFlags);
@@ -84,72 +109,6 @@ namespace Aftertime.Extensions.Reflection
             Assert.Equal(numberOfAnnotatedMembers, annotatedMembers.Count());
             Assert.True(annotatedMembers.All(m => m.MemberInfo != null));
             Assert.True(annotatedMembers.All(m => m.Attribute != null));
-        }
-
-        private static Tuple<int, int>[] _getAnnotated_X_Tests_numberOfMethods = new Tuple<int, int>[]
-        {
-            new Tuple<int, int>(0, 0),
-            new Tuple<int, int>(1, 0),
-            new Tuple<int, int>(0, 1),
-            new Tuple<int, int>(1, 1),
-            new Tuple<int, int>(2, 1),
-            new Tuple<int, int>(1, 2),
-            new Tuple<int, int>(2, 2),
-        };
-
-        private static IEnumerable<object[]> Get_GetAnnotated_X_Tests_Data()
-        {
-            foreach (Tuple<int, int> numbers in _getAnnotated_X_Tests_numberOfMethods)
-            {
-                yield return new object[] { typeof(MethodInfo), typeof(IReflect).GetMethod(nameof(IReflect.GetMethods)), numbers.Item1, numbers.Item2 };
-            }
-        }
-
-        //[Theory]
-        //[MemberData(nameof(Get_GetAnnotated_X_Tests_Data))]
-        public void GetAnnotated_X_Tests(Type memberType, MethodInfo methodUnderTest, int numberOfAnnotatedMembers, int numberOfNonAnnotatedMembers)
-        {
-            //  Prepare
-            BindingFlags bindingFlags = BindingFlags.Public;
-            BindingFlags? actualBindingFlags = default(BindingFlags?);
-
-            Expression expression = Expression.Call(methodUnderTest, Expression.Parameter(typeof(BindingFlags)));
-
-            MethodInfo[] methods = MockMethodInfoArray<AnnotationAttribute>(numberOfAnnotatedMembers, numberOfNonAnnotatedMembers);
-
-            Mock<IReflect> reflectMock = new Mock<IReflect>();
-
-            Moq.Language.ICallback callbackSetup = typeof(Mock<IReflect>).GetMethod(nameof(Mock<IReflect>.Setup))
-                .Invoke(reflectMock, new[] { expression }) as Moq.Language.ICallback;
-
-            //reflectMock.Setup(m => m.GetMethods(BindingFlags.Default))
-            //    .Callback((BindingFlags bf) =>
-            //    {
-            //        actualBindingFlags = bf;
-            //    })
-            //    .Returns(methods);
-
-            //Moq.Language.I
-
-            ////callbackSetup
-            ////    .Callback<((BindingFlags bf) =>
-            ////    {
-            ////        actualBindingFlags = bf;
-            ////    })
-            ////    .Returns(methods);
-
-            ////  Pre-validate
-            //Assert.Equal(numberOfAnnotatedMembers, methods.Count(mi => mi.GetCustomAttribute<AnnotationAttribute>() != null));
-            //Assert.Equal(numberOfNonAnnotatedMembers, methods.Count(mi => mi.GetCustomAttribute<AnnotationAttribute>() == null));
-
-            ////  Perform
-            //IEnumerable<AnnotatedMethodInfo<AnnotationAttribute>> annotatedMethods = reflectMock.Object
-            //    .GetAnnotatedMethods<AnnotationAttribute>(bindingFlags);
-
-            ////  Post-validate
-            //Assert.NotNull(actualBindingFlags);
-            //Assert.Equal(bindingFlags, (BindingFlags)actualBindingFlags);
-            //Assert.Equal(numberOfAnnotatedMembers, annotatedMethods.Count());
         }
 
         private MethodInfo[] MockMethodInfoArray<TAttribute>(int numberOfAnnotatedMethods, int numberOfNonAnnotatedMethods)
