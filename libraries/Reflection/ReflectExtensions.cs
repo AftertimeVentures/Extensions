@@ -4,7 +4,6 @@ using System.Reflection;
 
 namespace Aftertime.Extensions.Reflection
 {
-    Fail Build!!!
     /// <summary>
     /// 
     /// </summary>
