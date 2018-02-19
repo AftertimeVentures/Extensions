@@ -13,10 +13,13 @@ namespace Aftertime.Extensions.Reflection
         /// <typeparam name="TAttribute">Type of attribute to select methods with.</typeparam>
         /// <param name="reflect">The target object to retrieve methods for.</param>
         /// <param name="bindingFlags">Binding flags to be used to select methods from <paramref name="reflect"/>.</param>
-        /// <returns>An array of <see cref="AnnotatedMethodInfo{TAttribute}"/> with MethodInfo property containing information
-        /// about the method and Attribute property containing an instance of the attribute of type <typeparamref name="TAttribute"/>
-        /// attached to it. If no methods matching the given <paramref name="bindingFlags"/> and <typeparamref name="TAttribute"/> are
-        /// found on type <paramref name="reflect"/>, an empty array is returned.</returns>
+        /// <returns>An array of <see cref="AnnotatedMethodInfo{TAttribute}"/> with <see cref="AnnotatedMethodInfo{TAttribute}.MethodInfo"/> 
+        /// property containing about the method and <see cref="AnnotatedMemberInfo{TAnnotation}.Attribute"/> property containing an instance 
+        /// of the attribute of type <typeparamref name="TAttribute"/> attached to it. If no methods matching the given 
+        /// <paramref name="bindingFlags"/> and <typeparamref name="TAttribute"/> are found on <paramref name="reflect"/>, 
+        /// an empty array is returned. Both <see cref="AnnotatedMethodInfo{TAttribute}.MethodInfo"/> and 
+        /// <see cref="AnnotatedMemberInfo{TAnnotation}.Attribute"/> for all items in the result array are guranteed
+        /// to be not null.</returns>
         public static AnnotatedMethodInfo<TAttribute>[] GetAnnotatedMethods<TAttribute>
             (this IReflect reflect
             , BindingFlags bindingFlags = BindingFlags.Default)
