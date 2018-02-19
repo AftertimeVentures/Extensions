@@ -15,7 +15,7 @@ namespace Aftertime.Extensions.Reflection
         /// <param name="bindingFlags">Binding flags to be used to select methods from <paramref name="reflect"/>.</param>
         /// <returns>An array of <see cref="AnnotatedMethodInfo{TAttribute}"/> with MethodInfo property containing information
         /// about the method and Attribute property containing an instance of the attribute of type <typeparamref name="TAttribute"/>
-        /// attached to it. If no methods mathing given <paramref name="bindingFlags"/> and <typeparamref name="TAttribute"/> are
+        /// attached to it. If no methods matching the given <paramref name="bindingFlags"/> and <typeparamref name="TAttribute"/> are
         /// found on type <paramref name="reflect"/>, an empty array is returned.</returns>
         public static AnnotatedMethodInfo<TAttribute>[] GetAnnotatedMethods<TAttribute>
             (this IReflect reflect
