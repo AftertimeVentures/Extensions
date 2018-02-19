@@ -4,6 +4,10 @@ using System.Reflection;
 
 namespace Aftertime.Extensions.Reflection
 {
+    Fail Build!!!
+    /// <summary>
+    /// 
+    /// </summary>
     public static class ReflectExtensions
     {
         /// <summary>
