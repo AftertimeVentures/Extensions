@@ -4,6 +4,9 @@ using System.Reflection;
 
 namespace Aftertime.Extensions.Reflection
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class ReflectExtensions
     {
         /// <summary>
