@@ -62,9 +62,6 @@ namespace Aftertime.Extensions.Reflection
         {
             foreach (Tuple<Type, Expression, Expression> expressions in _getTestExpressionTuples())
             {
-                ParameterExpression parameterReflect = Expression.Parameter(typeof(IReflect));
-                ParameterExpression parameterBindingFlags = Expression.Parameter(typeof(BindingFlags));
-
                 foreach (Tuple<int, int> numbers in _getNumberOfMembersPairs())
                 {
                     yield return new object[] {
