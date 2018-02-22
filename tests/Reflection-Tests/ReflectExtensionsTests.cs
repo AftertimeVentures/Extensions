@@ -79,26 +79,19 @@ namespace Aftertime.Extensions.Reflection
             where T: MemberInfo
         {
             //  Prepare
-            BindingFlags bindingFlags = BindingFlags.Public;
+            BindingFlags bindingFlags = It.IsAny<BindingFlags>();
             BindingFlags? actualBindingFlags = default(BindingFlags?);
 
             T[] members = MockMemberInfoArray<T, AnnotationAttribute>(numberOfAnnotatedMembers, numberOfNonAnnotatedMembers);
 
-            Mock<IReflect> reflectMock = new Mock<IReflect>();
-
-            reflectMock.Setup(memberSelectorExpr)
-                .Callback((BindingFlags bf) =>
-                {
-                    actualBindingFlags = bf;
-                })
-                .Returns(members);
+            IReflect reflect = MockReflectMemberSelectorMethod(memberSelectorExpr, members, bf => actualBindingFlags = bf);
 
             //  Pre-validate
             Assert.Equal(numberOfAnnotatedMembers, members.Count(mi => mi.GetCustomAttribute<AnnotationAttribute>() != null));
             Assert.Equal(numberOfNonAnnotatedMembers, members.Count(mi => mi.GetCustomAttribute<AnnotationAttribute>() == null));
 
             //  Perform
-            IEnumerable<AnnotatedMemberInfo<AnnotationAttribute>> annotatedMembers = methodUnderTest.Compile().Invoke(reflectMock.Object, bindingFlags);
+            IEnumerable<AnnotatedMemberInfo<AnnotationAttribute>> annotatedMembers = methodUnderTest.Compile().Invoke(reflect, bindingFlags);
 
             //  Post-validate
             Assert.NotNull(actualBindingFlags);
@@ -132,6 +125,17 @@ namespace Aftertime.Extensions.Reflection
             }
 
             return methodInfoMock.Object;
+        }
+
+        private IReflect MockReflectMemberSelectorMethod<T>(Expression<Func<IReflect, T[]>> memberSelectorExpr, T[] members, Action<BindingFlags> callback)
+        {
+            Mock<IReflect> reflectMock = new Mock<IReflect>();
+
+            reflectMock.Setup(memberSelectorExpr)
+                .Callback(callback)
+                .Returns(members);
+
+            return reflectMock.Object;
         }
     }
 }
