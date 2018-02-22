@@ -111,26 +111,6 @@ namespace Aftertime.Extensions.Reflection
             Assert.True(annotatedMembers.All(m => m.Attribute != null));
         }
 
-        private MethodInfo[] MockMethodInfoArray<TAttribute>(int numberOfAnnotatedMethods, int numberOfNonAnnotatedMethods)
-            where TAttribute : Attribute
-        {
-            MethodInfo[] result = new MethodInfo[numberOfAnnotatedMethods + numberOfNonAnnotatedMethods];
-
-            int pos = 0;
-
-            while (--numberOfAnnotatedMethods >= 0)
-            {
-                result[pos++] = MockMethodInfo<TAttribute>(true);
-            }
-
-            while (--numberOfNonAnnotatedMethods >= 0)
-            {
-                result[pos++] = MockMethodInfo<TAttribute>(false);
-            }
-
-            return result;
-        }
-
         private T[] MockMemberInfoArray<T, TAttribute>(int numberOfAnnotatedMethods, int numberOfNonAnnotatedMethods)
             where T: MemberInfo
             where TAttribute : Attribute
@@ -138,22 +118,6 @@ namespace Aftertime.Extensions.Reflection
             return Enumerable.Range(0, numberOfAnnotatedMethods + numberOfNonAnnotatedMethods)
                 .Select(i => MockMemberInfo<T, TAttribute>(i < numberOfAnnotatedMethods))
                 .ToArray();
-        }
-
-        private MethodInfo MockMethodInfo<TAttribute>(bool isAnnotated)
-            where TAttribute : Attribute
-        {
-            Mock<MethodInfo> methodInfoMock = new Mock<MethodInfo>();
-
-            if (isAnnotated)
-            {
-                Mock<TAttribute> attributeMock = new Mock<TAttribute>();
-
-                methodInfoMock.Setup(m => m.GetCustomAttributes(typeof(TAttribute), It.IsAny<bool>()))
-                    .Returns(new[] { attributeMock.Object });
-            }
-
-            return methodInfoMock.Object;
         }
 
         private T MockMemberInfo<T, TAttribute>(bool isAnnotated)
