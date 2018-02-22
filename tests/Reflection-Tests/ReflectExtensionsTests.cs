@@ -135,21 +135,9 @@ namespace Aftertime.Extensions.Reflection
             where T: MemberInfo
             where TAttribute : Attribute
         {
-            T[] result = new T[numberOfAnnotatedMethods + numberOfNonAnnotatedMethods];
-
-            int pos = 0;
-
-            while (--numberOfAnnotatedMethods >= 0)
-            {
-                result[pos++] = MockMemberInfo<T, TAttribute>(true);
-            }
-
-            while (--numberOfNonAnnotatedMethods >= 0)
-            {
-                result[pos++] = MockMemberInfo<T, TAttribute>(false);
-            }
-
-            return result;
+            return Enumerable.Range(0, numberOfAnnotatedMethods + numberOfNonAnnotatedMethods)
+                .Select(i => MockMemberInfo<T, TAttribute>(i < numberOfAnnotatedMethods))
+                .ToArray();
         }
 
         private MethodInfo MockMethodInfo<TAttribute>(bool isAnnotated)
