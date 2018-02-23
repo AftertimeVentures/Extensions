@@ -62,14 +62,14 @@ namespace Aftertime.Extensions.Reflection
         {
             foreach (Tuple<Type, Expression, Expression> expressions in _getTestExpressionTuples())
             {
-                foreach (Tuple<int, int> numbers in _getNumberOfMembersPairs())
+                foreach ((int numberOfAnnotatedMembers, int numberOfNonAnnotatedMembers) in _getNumberOfMembersPairs())
                 {
                     yield return new object[] {
                         expressions.Item1,
                         expressions.Item2,
                         expressions.Item3,
-                        numbers.Item1,
-                        numbers.Item2,
+                        numberOfAnnotatedMembers,
+                        numberOfNonAnnotatedMembers,
                     };
                 }
             }

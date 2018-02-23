@@ -1,5 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="$(SolutionDir)@utomation\build\common.props" />
+  <PropertyGroup>
+    <CommonTargetsFilePath>$(SolutionDir)@utomation\build\common.targets</CommonTargetsFilePath>
+    <CommonPropsFilePath>$(SolutionDir)@utomation\build\common.props</CommonPropsFilePath>
+  </PropertyGroup>
+
+  <Import Project="$(CommonPropsFilePath)" Condition="Exists('$(CommonPropsFilePath)')" />
   
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -15,5 +20,9 @@
     <DefineConstants>TRACE;RELEASE;PACKED;SIGNED;NETSTANDARD2_0</DefineConstants>
   </PropertyGroup>
 
-  <Import Project="$(SolutionDir)@utomation\build\common.targets" />
+  <Import Project="$(CommonTargetsFilePath)" Condition="Exists('$(CommonTargetsFilePath)')" />
+
+  <ItemGroup>
+    <PackageReference Include="Vsxmd" Version="1.2.0" />
+  </ItemGroup>
 </Project>
