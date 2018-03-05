@@ -114,17 +114,17 @@ namespace Aftertime.Extensions.Reflection
             where T: MemberInfo
             where TAttribute : Attribute
         {
-            Mock<T> methodInfoMock = new Mock<T>();
+            Mock<T> mockMemberInfo = new Mock<T>();
 
             if (isAnnotated)
             {
                 Mock<TAttribute> attributeMock = new Mock<TAttribute>();
 
-                methodInfoMock.Setup(m => m.GetCustomAttributes(typeof(TAttribute), It.IsAny<bool>()))
+                mockMemberInfo.Setup(m => m.GetCustomAttributes(typeof(TAttribute), It.IsAny<bool>()))
                     .Returns(new[] { attributeMock.Object });
             }
 
-            return methodInfoMock.Object;
+            return mockMemberInfo.Object;
         }
 
         private IReflect MockReflectMemberSelectorMethod<T>(Expression<Func<IReflect, T[]>> memberSelectorExpr, T[] members, Action<BindingFlags> callback)
