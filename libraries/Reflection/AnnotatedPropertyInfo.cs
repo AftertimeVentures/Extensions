@@ -7,8 +7,16 @@ namespace Aftertime.Extensions.Reflection
         : AnnotatedMemberInfoSkeleton<TAttribute>
         where TAttribute: Attribute
     {
-        public PropertyInfo PropertyInfo { get; set; }
+        public AnnotatedPropertyInfo( PropertyInfo propertyInfo )
+        {
+            _propertyInfo = propertyInfo
+                ?? throw new ArgumentNullException(nameof(propertyInfo));
+        }
 
-        protected override MemberInfo GetMemberInfo() => PropertyInfo;
+        public PropertyInfo PropertyInfo => _propertyInfo;
+
+        public override MemberInfo MemberInfo => PropertyInfo;
+
+        private readonly PropertyInfo _propertyInfo;
     }
 }

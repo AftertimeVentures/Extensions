@@ -10,8 +10,8 @@ namespace Aftertime.Extensions.Reflection
     public static class ReflectExtensions
     {
         /// <summary>
-        /// Gets all methods of <paramref name="reflect"/> with respect to given <paramref name="bindingFlags"/> 
-        /// that have an attribute of type <typeparamref name="TAttribute"/> along with these attributes.
+        /// Gets all methods of <paramref name="reflect"/> that match provided <paramref name="bindingFlags"/> 
+        /// and have an attribute of type <typeparamref name="TAttribute"/> along with these attributes.
         /// </summary>
         /// <typeparam name="TAttribute">Type of attribute to select methods with.</typeparam>
         /// <param name="reflect">The target object to retrieve methods for.</param>
@@ -29,12 +29,8 @@ namespace Aftertime.Extensions.Reflection
             where TAttribute : Attribute
         {
             return reflect.GetMethods(bindingFlags)
-                .Select(mi => new AnnotatedMethodInfo<TAttribute>()
-                {
-                    Attribute = mi.GetCustomAttribute<TAttribute>(),
-                    MethodInfo = mi,
-                })
-                .Where(ami => ami.Attribute != null)
+                .Select(mi => new AnnotatedMethodInfo<TAttribute>(mi))
+                .Where(ami => ami.Annotation != null)
                 .ToArray();
         }
 
@@ -44,12 +40,8 @@ namespace Aftertime.Extensions.Reflection
             where TAttribute : Attribute
         {
             return reflect.GetProperties(bindingFlags)
-                .Select(pi => new AnnotatedPropertyInfo<TAttribute>()
-                {
-                    Attribute = pi.GetCustomAttribute<TAttribute>(),
-                    PropertyInfo = pi,
-                })
-                .Where(ami => ami.Attribute != null)
+                .Select(pi => new AnnotatedPropertyInfo<TAttribute>(pi))
+                .Where(api => api.Annotation != null)
                 .ToArray();
         }
 
@@ -59,12 +51,8 @@ namespace Aftertime.Extensions.Reflection
             where TAttribute : Attribute
         {
             return reflect.GetFields(bindingFlags)
-                .Select(fi => new AnnotatedFieldInfo<TAttribute>()
-                {
-                    Attribute = fi.GetCustomAttribute<TAttribute>(),
-                    FieldInfo = fi,
-                })
-                .Where(afi => afi.Attribute != null)
+                .Select(fi => new AnnotatedFieldInfo<TAttribute>(fi))
+                .Where(afi => afi.Annotation != null)
                 .ToArray();
         }
 
@@ -74,12 +62,8 @@ namespace Aftertime.Extensions.Reflection
             where TAttribute : Attribute
         {
             return reflect.GetMembers(bindingFlags)
-                .Select(mi => new AnnotatedMemberInfo<TAttribute>()
-                {
-                    Attribute = mi.GetCustomAttribute<TAttribute>(),
-                    MemberInfo = mi,
-                })
-                .Where(ami => ami.Attribute != null)
+                .Select(mi => new AnnotatedMemberInfo<TAttribute>(mi))
+                .Where(ami => ami.Annotation != null)
                 .ToArray();
         }
     }

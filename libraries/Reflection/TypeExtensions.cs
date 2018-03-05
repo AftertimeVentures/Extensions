@@ -13,12 +13,8 @@ namespace Aftertime.Extensions.Reflection
             where TAttribute : Attribute
         {
             return type.GetEvents(bindingFlags)
-                .Select(ei => new AnnotatedEventInfo<TAttribute>()
-                {
-                    Attribute = ei.GetCustomAttribute<TAttribute>(),
-                    EventInfo = ei,
-                })
-                .Where(ami => ami.Attribute != null);
+                .Select(ei => new AnnotatedEventInfo<TAttribute>(ei))
+                .Where(ami => ami.Annotation != null);
         }
     }
 }

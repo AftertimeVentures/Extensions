@@ -11,12 +11,8 @@ namespace Aftertime.Extensions.Reflection
             where TAttribute : Attribute
         {
             return assembly.GetTypes()
-                .Select(t => new AnnotatedTypeInfo<TAttribute>()
-                {
-                    Attribute = t.GetCustomAttribute<TAttribute>(),
-                    Type = t,
-                })
-                .Where(ati => ati.Attribute != null);
+                .Select(t => new AnnotatedTypeInfo<TAttribute>(t))
+                .Where(ati => ati.Annotation != null);
         }
     }
 }

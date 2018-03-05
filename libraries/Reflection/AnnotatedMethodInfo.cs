@@ -7,8 +7,16 @@ namespace Aftertime.Extensions.Reflection
         : AnnotatedMemberInfoSkeleton<TAttribute>
         where TAttribute : Attribute
     {
-        public MethodInfo MethodInfo { get; set; }
+        public AnnotatedMethodInfo(MethodInfo methodInfo)
+        {
+            _methodInfo = methodInfo
+                ?? throw new ArgumentNullException(nameof(methodInfo));
+        }
 
-        protected override MemberInfo GetMemberInfo() => MethodInfo;
+        public MethodInfo MethodInfo => _methodInfo;
+
+        public override MemberInfo MemberInfo => MethodInfo;
+
+        private readonly MethodInfo _methodInfo;
     }
 }

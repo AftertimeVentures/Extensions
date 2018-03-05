@@ -9,8 +9,14 @@ namespace Aftertime.Extensions.Reflection
         : AnnotatedMemberInfoSkeleton<TAnnotation>
         where TAnnotation : Attribute
     {
-        public MemberInfo MemberInfo { get; set; }
+        internal AnnotatedMemberInfo(MemberInfo memberInfo)
+        {
+            _memberInfo = memberInfo
+                ?? throw new ArgumentNullException(nameof(memberInfo));
+        }
 
-        protected override MemberInfo GetMemberInfo() => MemberInfo;
+        public override MemberInfo MemberInfo => MemberInfo;
+
+        private readonly MemberInfo _memberInfo;
     }
 }
