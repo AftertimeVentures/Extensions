@@ -7,8 +7,8 @@ namespace Aftertime.Extensions.Reflection
 {
     public static class AssemblyExtensions
     {
-        public static IEnumerable<AnnotatedTypeInfo<TAttribute>> GetAnnotatedTypes<TAttribute>(this Assembly assembly)
-            where TAttribute: Attribute
+        public static IEnumerable<AnnotatedTypeInfo<TAttribute>> GetAnnotatedTypes<TAttribute>( this Assembly assembly )
+            where TAttribute : Attribute
         {
             return assembly.GetTypes()
                 .Select(t => new AnnotatedTypeInfo<TAttribute>()

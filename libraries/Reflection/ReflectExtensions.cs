@@ -24,8 +24,8 @@ namespace Aftertime.Extensions.Reflection
         /// <see cref="AnnotatedMemberInfo{TAnnotation}.Attribute"/> for all items in the result array are guranteed
         /// to be not null.</returns>
         public static AnnotatedMethodInfo<TAttribute>[] GetAnnotatedMethods<TAttribute>
-            (this IReflect reflect
-            , BindingFlags bindingFlags = BindingFlags.Default)
+            ( this IReflect reflect
+            , BindingFlags bindingFlags = BindingFlags.Default )
             where TAttribute : Attribute
         {
             return reflect.GetMethods(bindingFlags)
@@ -39,8 +39,8 @@ namespace Aftertime.Extensions.Reflection
         }
 
         public static AnnotatedPropertyInfo<TAttribute>[] GetAnnotatedProperties<TAttribute>
-            (this IReflect reflect
-            , BindingFlags bindingFlags = BindingFlags.Default)
+            ( this IReflect reflect
+            , BindingFlags bindingFlags = BindingFlags.Default )
             where TAttribute : Attribute
         {
             return reflect.GetProperties(bindingFlags)
@@ -54,8 +54,8 @@ namespace Aftertime.Extensions.Reflection
         }
 
         public static AnnotatedFieldInfo<TAttribute>[] GetAnnotatedFields<TAttribute>
-            (this IReflect reflect
-            , BindingFlags bindingFlags = BindingFlags.Default)
+            ( this IReflect reflect
+            , BindingFlags bindingFlags = BindingFlags.Default )
             where TAttribute : Attribute
         {
             return reflect.GetFields(bindingFlags)
@@ -65,6 +65,21 @@ namespace Aftertime.Extensions.Reflection
                     FieldInfo = fi,
                 })
                 .Where(afi => afi.Attribute != null)
+                .ToArray();
+        }
+
+        public static AnnotatedMemberInfo<TAttribute>[] GetAnnotatedMembers<TAttribute>
+            ( this IReflect reflect
+            , BindingFlags bindingFlags = BindingFlags.Default )
+            where TAttribute : Attribute
+        {
+            return reflect.GetMembers(bindingFlags)
+                .Select(mi => new AnnotatedMemberInfo<TAttribute>()
+                {
+                    Attribute = mi.GetCustomAttribute<TAttribute>(),
+                    MemberInfo = mi,
+                })
+                .Where(ami => ami.Attribute != null)
                 .ToArray();
         }
     }

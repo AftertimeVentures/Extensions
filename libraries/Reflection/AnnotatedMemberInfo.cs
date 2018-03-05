@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
+using System.Text;
 
 namespace Aftertime.Extensions.Reflection
 {
-    public abstract class AnnotatedMemberInfo<TAnnotation>
-        where TAnnotation: Attribute
+    public sealed class AnnotatedMemberInfo<TAnnotation>
+        : AnnotatedMemberInfoSkeleton<TAnnotation>
+        where TAnnotation : Attribute
     {
-        public TAnnotation Attribute { get; set; }
-        public MemberInfo MemberInfo => GetMemberInfo();
+        public MemberInfo MemberInfo { get; set; }
 
-        protected abstract MemberInfo GetMemberInfo();
+        protected override MemberInfo GetMemberInfo() => MemberInfo;
     }
 }

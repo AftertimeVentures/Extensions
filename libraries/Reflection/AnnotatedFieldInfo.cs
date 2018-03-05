@@ -6,7 +6,7 @@ using System.Text;
 namespace Aftertime.Extensions.Reflection
 {
     public sealed class AnnotatedFieldInfo<TAttribute>
-        : AnnotatedMemberInfo<TAttribute>
+        : AnnotatedMemberInfoSkeleton<TAttribute>
         where TAttribute: Attribute
     {
         public FieldInfo FieldInfo { get; set; }

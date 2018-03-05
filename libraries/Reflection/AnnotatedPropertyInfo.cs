@@ -4,7 +4,7 @@ using System.Reflection;
 namespace Aftertime.Extensions.Reflection
 {
     public sealed class AnnotatedPropertyInfo<TAttribute>
-        : AnnotatedMemberInfo<TAttribute>
+        : AnnotatedMemberInfoSkeleton<TAttribute>
         where TAttribute: Attribute
     {
         public PropertyInfo PropertyInfo { get; set; }
