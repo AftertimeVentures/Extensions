@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E982110D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "@utomation", "@utomation", "{79D0648E-DE2F-472A-9416-05E8C5FFD8BC}"
 	ProjectSection(SolutionItems) = preProject
-		@utomation\build\solution\after.solution.targets = @utomation\build\solution\after.solution.targets
-		@utomation\build\solution\before.solution.targets = @utomation\build\solution\before.solution.targets
 		@utomation\development.snk = @utomation\development.snk
 	EndProjectSection
 EndProject
