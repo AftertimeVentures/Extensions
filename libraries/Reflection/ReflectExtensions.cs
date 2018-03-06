@@ -5,7 +5,7 @@ using System.Reflection;
 namespace Aftertime.Extensions.Reflection
 {
     /// <summary>
-    /// 
+    /// Provides extension methods for <see cref="IReflect"/>.
     /// </summary>
     public static class ReflectExtensions
     {

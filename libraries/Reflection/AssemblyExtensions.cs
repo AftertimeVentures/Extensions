@@ -6,7 +6,7 @@ using System.Reflection;
 namespace Aftertime.Extensions.Reflection
 {
     /// <summary>
-    /// Contains extensions methods for <see cref="Assembly"/>.
+    /// Provices extension methods for <see cref="Assembly"/>.
     /// </summary>
     public static class AssemblyExtensions
     {

@@ -5,6 +5,10 @@ using System.Text;
 
 namespace Aftertime.Extensions.Reflection
 {
+    /// <summary>
+    /// Annotated counterpart for <see cref="FieldInfo"/>.
+    /// </summary>
+    /// <typeparam name="TAnnotation"></typeparam>
     public sealed class AnnotatedFieldInfo<TAnnotation>
         : AnnotatedMemberInfoSkeleton<TAnnotation>
         where TAnnotation: Attribute

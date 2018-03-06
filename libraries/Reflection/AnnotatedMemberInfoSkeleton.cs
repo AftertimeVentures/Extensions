@@ -4,16 +4,19 @@ using System.Reflection;
 namespace Aftertime.Extensions.Reflection
 {
     /// <summary>
-    /// Represents a common base class for various Annotated* classes, i.e. <see cref="AnnotatedMemberInfo{TAnnotation}"/>,
+    /// A common base class for various kinds of Annotated* classes, i.e. <see cref="AnnotatedMemberInfo{TAnnotation}"/>,
     /// <see cref="AnnotatedMethodInfo{TAnnotation}"/>, <see cref="AnnotatedPropertyInfo{TAnnotation}"/>,
     /// <see cref="AnnotatedFieldInfo{TAnnotation}"/>, and <see cref="AnnotatedEventInfo{TAnnotation}"/>.
     /// Classes derived from <see cref="AnnotatedMemberInfoSkeleton{TAnnotation}"/> represent annotated versions of respected
-    /// member infos.
+    /// member info types.
     /// </summary>
     /// <typeparam name="TAnnotation"></typeparam>
     public abstract class AnnotatedMemberInfoSkeleton<TAnnotation>
         where TAnnotation : Attribute
     {
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
         protected AnnotatedMemberInfoSkeleton()
         {
             _lazyAnnotation = new Lazy<TAnnotation>(() => MemberInfo.GetCustomAttribute<TAnnotation>());
@@ -24,7 +27,7 @@ namespace Aftertime.Extensions.Reflection
         /// </summary>
         public TAnnotation Annotation => _lazyAnnotation.Value;
         /// <summary>
-        /// MemberInfo of the member that this Annotated* type is associated with.
+        /// <see cref="MemberInfo"/> for the member that this Annotated* member info is related to.
         /// </summary>
         public abstract MemberInfo MemberInfo { get; }
 

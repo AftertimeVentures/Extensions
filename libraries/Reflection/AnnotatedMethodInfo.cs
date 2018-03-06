@@ -7,7 +7,7 @@ namespace Aftertime.Extensions.Reflection
         : AnnotatedMemberInfoSkeleton<TAnnotation>
         where TAnnotation : Attribute
     {
-        public AnnotatedMethodInfo(MethodInfo methodInfo)
+        internal AnnotatedMethodInfo(MethodInfo methodInfo)
         {
             _methodInfo = methodInfo
                 ?? throw new ArgumentNullException(nameof(methodInfo));

@@ -6,7 +6,7 @@ using System.Reflection;
 namespace Aftertime.Extensions.Reflection
 {
     /// <summary>
-    /// Contains extensions methods for <see cref="Type"/>.
+    /// Provides extension methods for <see cref="Type"/>.
     /// </summary>
     public static class TypeExtensions
     {

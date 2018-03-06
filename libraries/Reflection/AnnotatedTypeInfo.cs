@@ -3,6 +3,10 @@ using System.Reflection;
 
 namespace Aftertime.Extensions.Reflection
 {
+    /// <summary>
+    /// Annotated counterpart for <see cref="TypeInfo"/>.
+    /// </summary>
+    /// <typeparam name="TAnnotation">Type of annotation attribute.</typeparam>
     public sealed class AnnotatedTypeInfo<TAnnotation>
         where TAnnotation: Attribute
     {
