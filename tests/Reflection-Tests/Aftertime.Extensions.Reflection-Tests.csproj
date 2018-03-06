@@ -1,4 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <CommonTargetsFilePath>$(SolutionDir)@utomation\build\common.targets</CommonTargetsFilePath>
+    <CommonPropsFilePath>$(SolutionDir)@utomation\build\common.props</CommonPropsFilePath>
+  </PropertyGroup>
+
+  <Import Project="$(CommonPropsFilePath)" Condition="Exists('$(CommonPropsFilePath)')" />
+  
   <Import Project="$(SolutionDir)@utomation\build\common.props" />
 
   <PropertyGroup>
@@ -31,5 +38,5 @@
     <ProjectReference Include="..\..\libraries\Reflection\Aftertime.Extensions.Reflection.csproj" />
   </ItemGroup>
 
-  <Import Project="$(SolutionDir)@utomation\build\common.targets" />
+  <Import Project="$(CommonTargetsFilePath)" Condition="Exists('$(CommonTargetsFilePath)')" />
 </Project>

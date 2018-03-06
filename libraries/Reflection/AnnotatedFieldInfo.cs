@@ -5,12 +5,24 @@ using System.Text;
 
 namespace Aftertime.Extensions.Reflection
 {
-    public sealed class AnnotatedFieldInfo<TAttribute>
-        : AnnotatedMemberInfo<TAttribute>
-        where TAttribute: Attribute
+    /// <summary>
+    /// Annotated counterpart for <see cref="System.Reflection.FieldInfo"/>.
+    /// </summary>
+    /// <typeparam name="TAnnotation"></typeparam>
+    public sealed class AnnotatedFieldInfo<TAnnotation>
+        : AnnotatedMemberInfoSkeleton<TAnnotation>
+        where TAnnotation: Attribute
     {
-        public FieldInfo FieldInfo { get; set; }
+        internal AnnotatedFieldInfo(FieldInfo fieldInfo)
+        {
+            _fieldInfo = fieldInfo
+                ?? throw new ArgumentNullException(nameof(fieldInfo));
+        }
 
-        protected override MemberInfo GetMemberInfo() => FieldInfo;
+        public FieldInfo FieldInfo => _fieldInfo;
+
+        public override MemberInfo MemberInfo => FieldInfo;
+
+        private readonly FieldInfo _fieldInfo;
     }
 }

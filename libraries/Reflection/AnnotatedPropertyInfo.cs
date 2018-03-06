@@ -3,12 +3,31 @@ using System.Reflection;
 
 namespace Aftertime.Extensions.Reflection
 {
-    public sealed class AnnotatedPropertyInfo<TAttribute>
-        : AnnotatedMemberInfo<TAttribute>
-        where TAttribute: Attribute
+    /// <summary>
+    /// Annotated counterpart for <see cref="System.Reflection.PropertyInfo"/>.
+    /// </summary>
+    /// <typeparam name="TAnnotation"></typeparam>
+    public sealed class AnnotatedPropertyInfo<TAnnotation>
+        : AnnotatedMemberInfoSkeleton<TAnnotation>
+        where TAnnotation: Attribute
     {
-        public PropertyInfo PropertyInfo { get; set; }
+        internal AnnotatedPropertyInfo( PropertyInfo propertyInfo )
+        {
+            _propertyInfo = propertyInfo
+                ?? throw new ArgumentNullException(nameof(propertyInfo));
+        }
 
-        protected override MemberInfo GetMemberInfo() => PropertyInfo;
+        /// <summary>
+        /// Gets <see cref="PropertyInfo"/> for the member which this <see cref="AnnotatedPropertyInfo{TAnnotation}"/>
+        /// is assoicated with.
+        /// </summary>
+        public PropertyInfo PropertyInfo => _propertyInfo;
+        /// <summary>
+        /// Provides access to the associated member via base <see cref="System.Reflection.MemberInfo"/> class. 
+        /// Inherited from <see cref="AnnotatedMemberInfoSkeleton{TAnnotation}"/>
+        /// </summary>
+        public override MemberInfo MemberInfo => PropertyInfo;
+
+        private readonly PropertyInfo _propertyInfo;
     }
 }

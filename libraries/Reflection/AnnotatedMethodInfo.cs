@@ -3,12 +3,24 @@ using System.Reflection;
 
 namespace Aftertime.Extensions.Reflection
 {
-    public sealed class AnnotatedMethodInfo<TAttribute>
-        : AnnotatedMemberInfo<TAttribute>
-        where TAttribute : Attribute
+    /// <summary>
+    /// Annotated counterpart for <see cref="System.Reflection.MemberInfo"/>
+    /// </summary>
+    /// <typeparam name="TAnnotation"></typeparam>
+    public sealed class AnnotatedMethodInfo<TAnnotation>
+        : AnnotatedMemberInfoSkeleton<TAnnotation>
+        where TAnnotation : Attribute
     {
-        public MethodInfo MethodInfo { get; set; }
+        internal AnnotatedMethodInfo(MethodInfo methodInfo)
+        {
+            _methodInfo = methodInfo
+                ?? throw new ArgumentNullException(nameof(methodInfo));
+        }
 
-        protected override MemberInfo GetMemberInfo() => MethodInfo;
+        public MethodInfo MethodInfo => _methodInfo;
+
+        public override MemberInfo MemberInfo => MethodInfo;
+
+        private readonly MethodInfo _methodInfo;
     }
 }
