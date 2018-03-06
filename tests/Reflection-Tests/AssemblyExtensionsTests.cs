@@ -20,7 +20,7 @@ namespace Aftertime.Extensions.Reflection
             //  Pre-validate
 
             //  Perform
-            IEnumerable<AnnotatedTypeInfo<AnnotationAttribute>> annotatedTypes = Assembly.GetExecutingAssembly()
+            IEnumerable<AnnotatedType<AnnotationAttribute>> annotatedTypes = Assembly.GetExecutingAssembly()
                 .GetAnnotatedTypes<AnnotationAttribute>();
 
             //  Post-validate

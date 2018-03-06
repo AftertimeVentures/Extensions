@@ -4,13 +4,13 @@ using System.Reflection;
 namespace Aftertime.Extensions.Reflection
 {
     /// <summary>
-    /// Annotated counterpart for <see cref="TypeInfo"/>.
+    /// Annotated counterpart for <see cref="System.Type"/>.
     /// </summary>
     /// <typeparam name="TAnnotation">Type of annotation attribute.</typeparam>
-    public sealed class AnnotatedTypeInfo<TAnnotation>
+    public sealed class AnnotatedType<TAnnotation>
         where TAnnotation: Attribute
     {
-        internal AnnotatedTypeInfo(Type type)
+        internal AnnotatedType(Type type)
         {
             _type = type
                 ?? throw new ArgumentNullException(nameof(type));

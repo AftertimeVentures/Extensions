@@ -15,12 +15,12 @@ namespace Aftertime.Extensions.Reflection
         /// </summary>
         /// <typeparam name="TAnnotation">Type of attribute to search for types with.</typeparam>
         /// <param name="assembly">Assembly to search for types.</param>
-        /// <returns>Array of <see cref="AnnotatedTypeInfo{TAnnotation}"/> representing selected types.</returns>
-        public static AnnotatedTypeInfo<TAnnotation>[] GetAnnotatedTypes<TAnnotation>( this Assembly assembly )
+        /// <returns>Array of <see cref="AnnotatedType{TAnnotation}"/> representing selected types.</returns>
+        public static AnnotatedType<TAnnotation>[] GetAnnotatedTypes<TAnnotation>( this Assembly assembly )
             where TAnnotation : Attribute
         {
             return assembly.GetTypes()
-                .Select(t => new AnnotatedTypeInfo<TAnnotation>(t))
+                .Select(t => new AnnotatedType<TAnnotation>(t))
                 .Where(ati => ati.Annotation != null)
                 .ToArray();
         }

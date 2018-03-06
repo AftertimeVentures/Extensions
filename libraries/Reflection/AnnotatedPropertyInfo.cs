@@ -4,7 +4,7 @@ using System.Reflection;
 namespace Aftertime.Extensions.Reflection
 {
     /// <summary>
-    /// Annotated counterpart for <see cref="PropertyInfo"/>.
+    /// Annotated counterpart for <see cref="System.Reflection.PropertyInfo"/>.
     /// </summary>
     /// <typeparam name="TAnnotation"></typeparam>
     public sealed class AnnotatedPropertyInfo<TAnnotation>
