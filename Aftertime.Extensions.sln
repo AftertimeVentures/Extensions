@@ -9,11 +9,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E982110D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "@utomation", "@utomation", "{79D0648E-DE2F-472A-9416-05E8C5FFD8BC}"
 	ProjectSection(SolutionItems) = preProject
+		@utomation\build\solution\after.solution.targets = @utomation\build\solution\after.solution.targets
+		@utomation\build\solution\before.solution.targets = @utomation\build\solution\before.solution.targets
 		@utomation\development.snk = @utomation\development.snk
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4746318C-9259-4517-9327-1F99DE6C2EBF}"
 	ProjectSection(SolutionItems) = preProject
+		@utomation\build\attributes.targets = @utomation\build\attributes.targets
 		@utomation\build\common.props = @utomation\build\common.props
 		@utomation\build\common.targets = @utomation\build\common.targets
 	EndProjectSection
@@ -28,6 +31,19 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aftertime.Extensions.Reflection", "libraries\Reflection\Aftertime.Extensions.Reflection.csproj", "{FF762AA7-94A8-4554-B719-D952EC0C07EC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aftertime.Extensions.Reflection-Tests", "tests\Reflection-Tests\Aftertime.Extensions.Reflection-Tests.csproj", "{DC1AB739-71D6-4C01-830B-D20D4BC8085E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "attributes", "attributes", "{76F01319-7089-4548-9E0D-4FF932B30CF2}"
+	ProjectSection(SolutionItems) = preProject
+		@utomation\build\attributes\build-attributes2props.xslt = @utomation\build\attributes\build-attributes2props.xslt
+		@utomation\build\attributes\company-attributes2props.xslt = @utomation\build\attributes\company-attributes2props.xslt
+		@utomation\build\attributes\product-attributes2props.xslt = @utomation\build\attributes\product-attributes2props.xslt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{ADEEF92D-2682-43B0-B932-99BC3896FBEF}"
+	ProjectSection(SolutionItems) = preProject
+		@utomation\build\solution\after.solution.targets = @utomation\build\solution\after.solution.targets
+		@utomation\build\solution\before.solution.targets = @utomation\build\solution\before.solution.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +77,8 @@ Global
 		{4746318C-9259-4517-9327-1F99DE6C2EBF} = {79D0648E-DE2F-472A-9416-05E8C5FFD8BC}
 		{FF762AA7-94A8-4554-B719-D952EC0C07EC} = {0BB85A68-5D39-4C09-84B6-7BE9E50D832A}
 		{DC1AB739-71D6-4C01-830B-D20D4BC8085E} = {E982110D-7F38-42BC-AB75-88171EC63654}
+		{76F01319-7089-4548-9E0D-4FF932B30CF2} = {4746318C-9259-4517-9327-1F99DE6C2EBF}
+		{ADEEF92D-2682-43B0-B932-99BC3896FBEF} = {4746318C-9259-4517-9327-1F99DE6C2EBF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEC02972-550C-4575-9FDF-D21543549E22}
