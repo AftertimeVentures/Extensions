@@ -3,5 +3,5 @@
   <PropertyGroup>
     <AttributesDir>$(MSBuildThisFileDirectory).attributes\</AttributesDir>
   </PropertyGroup>
-  <Import Project="$(MSBuildThisFileDirectory)@utomation\build\before.solution.targets"/>
+  <Import Project="$(MSBuildThisFileDirectory)@utomation\build\solution\before.solution.targets"/>
 </Project>
