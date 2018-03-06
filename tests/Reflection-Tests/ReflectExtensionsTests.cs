@@ -101,26 +101,26 @@ namespace Aftertime.Extensions.Reflection
             Assert.True(annotatedMembers.All(m => m.Annotation != null));
         }
 
-        private T[] MockMemberInfoArray<T, TAttribute>(int numberOfAnnotatedMethods, int numberOfNonAnnotatedMethods)
+        private T[] MockMemberInfoArray<T, TAnnotation>(int numberOfAnnotatedMethods, int numberOfNonAnnotatedMethods)
             where T: MemberInfo
-            where TAttribute : Attribute
+            where TAnnotation : Attribute
         {
             return Enumerable.Range(0, numberOfAnnotatedMethods + numberOfNonAnnotatedMethods)
-                .Select(i => MockMemberInfo<T, TAttribute>(i < numberOfAnnotatedMethods))
+                .Select(i => MockMemberInfo<T, TAnnotation>(i < numberOfAnnotatedMethods))
                 .ToArray();
         }
 
-        private T MockMemberInfo<T, TAttribute>(bool isAnnotated)
+        private T MockMemberInfo<T, TAnnotation>(bool isAnnotated)
             where T: MemberInfo
-            where TAttribute : Attribute
+            where TAnnotation : Attribute
         {
             Mock<T> mockMemberInfo = new Mock<T>();
 
             if (isAnnotated)
             {
-                Mock<TAttribute> attributeMock = new Mock<TAttribute>();
+                Mock<TAnnotation> attributeMock = new Mock<TAnnotation>();
 
-                mockMemberInfo.Setup(m => m.GetCustomAttributes(typeof(TAttribute), It.IsAny<bool>()))
+                mockMemberInfo.Setup(m => m.GetCustomAttributes(typeof(TAnnotation), It.IsAny<bool>()))
                     .Returns(new[] { attributeMock.Object });
             }
 

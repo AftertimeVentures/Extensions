@@ -4,14 +4,14 @@ using System.Reflection;
 namespace Aftertime.Extensions.Reflection
 {
     /// <summary>
-    /// Represents an event coupled with an attribute of type <typeparamref name="TAttribute"/>,
-    /// associated with it. If an event has no attributes of type <typeparamref name="TAttribute"/>,
+    /// Represents an event coupled with an attribute of type <typeparamref name="TAnnotation"/>,
+    /// associated with it. If an event has no attributes of type <typeparamref name="TAnnotation"/>,
     /// the <see cref="AnnotatedMemberInfoSkeleton{TAnnotation}.Annotation"/> field is null.
     /// </summary>
-    /// <typeparam name="TAttribute"></typeparam>
-    public sealed class AnnotatedEventInfo<TAttribute>
-        : AnnotatedMemberInfoSkeleton<TAttribute>
-        where TAttribute : Attribute
+    /// <typeparam name="TAnnotation"></typeparam>
+    public sealed class AnnotatedEventInfo<TAnnotation>
+        : AnnotatedMemberInfoSkeleton<TAnnotation>
+        where TAnnotation : Attribute
     {
         internal AnnotatedEventInfo(EventInfo eventInfo)
         {

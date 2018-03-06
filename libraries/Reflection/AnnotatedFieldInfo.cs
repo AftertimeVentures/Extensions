@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Aftertime.Extensions.Reflection
 {
-    public sealed class AnnotatedFieldInfo<TAttribute>
-        : AnnotatedMemberInfoSkeleton<TAttribute>
-        where TAttribute: Attribute
+    public sealed class AnnotatedFieldInfo<TAnnotation>
+        : AnnotatedMemberInfoSkeleton<TAnnotation>
+        where TAnnotation: Attribute
     {
         internal AnnotatedFieldInfo(FieldInfo fieldInfo)
         {

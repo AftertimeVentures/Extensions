@@ -3,9 +3,9 @@ using System.Reflection;
 
 namespace Aftertime.Extensions.Reflection
 {
-    public sealed class AnnotatedMethodInfo<TAttribute>
-        : AnnotatedMemberInfoSkeleton<TAttribute>
-        where TAttribute : Attribute
+    public sealed class AnnotatedMethodInfo<TAnnotation>
+        : AnnotatedMemberInfoSkeleton<TAnnotation>
+        where TAnnotation : Attribute
     {
         public AnnotatedMethodInfo(MethodInfo methodInfo)
         {

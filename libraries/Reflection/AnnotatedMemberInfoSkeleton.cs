@@ -5,8 +5,8 @@ namespace Aftertime.Extensions.Reflection
 {
     /// <summary>
     /// Represents a common base class for various Annotated* classes, i.e. <see cref="AnnotatedMemberInfo{TAnnotation}"/>,
-    /// <see cref="AnnotatedMethodInfo{TAttribute}{TAnnotation}"/>, <see cref="AnnotatedPropertyInfo{TAttribute}{TAnnotation}"/>,
-    /// <see cref="AnnotatedFieldInfo{TAttribute}{TAnnotation}"/>, and <see cref="AnnotatedEventInfo{TAttribute}{TAnnotation}"/>.
+    /// <see cref="AnnotatedMethodInfo{TAnnotation}"/>, <see cref="AnnotatedPropertyInfo{TAnnotation}"/>,
+    /// <see cref="AnnotatedFieldInfo{TAnnotation}"/>, and <see cref="AnnotatedEventInfo{TAnnotation}"/>.
     /// Classes derived from <see cref="AnnotatedMemberInfoSkeleton{TAnnotation}"/> represent annotated versions of respected
     /// member infos.
     /// </summary>
