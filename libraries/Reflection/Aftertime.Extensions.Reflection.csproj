@@ -7,7 +7,7 @@
   <Import Project="$(CommonPropsFilePath)" Condition="Exists('$(CommonPropsFilePath)')" />
   
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netcoreapp2.0</TargetFrameworks>
     <Configurations>Debug;Release;Release+Packed;Release+Packed+Signed</Configurations>
     <BinaryOutputType>library</BinaryOutputType>
   </PropertyGroup>
