@@ -4,9 +4,11 @@
     <CommonPropsFilePath>$(SolutionDir)@utomation\build\common.props</CommonPropsFilePath>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <BinaryOutputType>tests</BinaryOutputType>
+  </PropertyGroup>
+
   <Import Project="$(CommonPropsFilePath)" Condition="Exists('$(CommonPropsFilePath)')" />
-  
-  <Import Project="$(SolutionDir)@utomation\build\common.props" />
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
