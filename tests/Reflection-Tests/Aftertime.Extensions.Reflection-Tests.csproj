@@ -29,6 +29,10 @@
     <DefineConstants>TRACE;RELEASE;PACKED;SIGNED;NETCOREAPP2_0</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
     <PackageReference Include="Moq" Version="4.8.1" />
@@ -37,8 +41,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\libraries\Reflection\Aftertime.Extensions.Reflection.csproj" />
+    <ProjectReference Include="..\..\libraries\Reflection\Aftertime.Extensions.Reflection.csproj">
+      <Private>false</Private>
+    </ProjectReference>
   </ItemGroup>
 
   <Import Project="$(CommonTargetsFilePath)" Condition="Exists('$(CommonTargetsFilePath)')" />
+
+  <ItemGroup>
+    <AdditionalProbingPath Include="R:\AftertimeVentures\Extensions\core\!ws\Release\out\delivery\bin\libraries\netstandard2.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <PreserveCompilationContext>false</PreserveCompilationContext>
+  </PropertyGroup>
 </Project>

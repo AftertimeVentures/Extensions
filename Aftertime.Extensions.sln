@@ -42,6 +42,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{AD
 		@utomation\build\solution\before.solution.targets = @utomation\build\solution\before.solution.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8F29B330-4CFA-4532-B44F-F78F39A9BA20}"
+	ProjectSection(SolutionItems) = preProject
+		general.runsettings = general.runsettings
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{32F9D232-CB4C-40B1-BDB0-72ADE9C283C6}"
+	ProjectSection(SolutionItems) = preProject
+		@utomation\scripts\Update-ProjectReferencesInTestProject.ps1 = @utomation\scripts\Update-ProjectReferencesInTestProject.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +86,7 @@ Global
 		{DC1AB739-71D6-4C01-830B-D20D4BC8085E} = {E982110D-7F38-42BC-AB75-88171EC63654}
 		{76F01319-7089-4548-9E0D-4FF932B30CF2} = {4746318C-9259-4517-9327-1F99DE6C2EBF}
 		{ADEEF92D-2682-43B0-B932-99BC3896FBEF} = {4746318C-9259-4517-9327-1F99DE6C2EBF}
+		{32F9D232-CB4C-40B1-BDB0-72ADE9C283C6} = {79D0648E-DE2F-472A-9416-05E8C5FFD8BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEC02972-550C-4575-9FDF-D21543549E22}
