@@ -42,11 +42,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{AD
 		@utomation\build\solution\before.solution.targets = @utomation\build\solution\before.solution.targets
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8F29B330-4CFA-4532-B44F-F78F39A9BA20}"
-	ProjectSection(SolutionItems) = preProject
-		general.runsettings = general.runsettings
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{32F9D232-CB4C-40B1-BDB0-72ADE9C283C6}"
 	ProjectSection(SolutionItems) = preProject
 		@utomation\scripts\Update-ProjectReferencesInTestProject.ps1 = @utomation\scripts\Update-ProjectReferencesInTestProject.ps1
