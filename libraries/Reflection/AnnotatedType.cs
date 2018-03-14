@@ -18,7 +18,14 @@ namespace Aftertime.Extensions.Reflection
             _lazyAnnotation = new Lazy<TAnnotation>(() => _type.GetCustomAttribute<TAnnotation>());
         }
 
+        /// <summary>
+        /// Annnotation attribute on type.
+        /// </summary>
         public TAnnotation Annotation => _lazyAnnotation.Value;
+        
+        /// <summary>
+        /// Gets the non-annotated counterpart of this annotated type.
+        /// </summary>
         public Type Type => _type;
 
         private readonly Lazy<TAnnotation> _lazyAnnotation;

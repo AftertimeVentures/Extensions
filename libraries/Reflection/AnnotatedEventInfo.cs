@@ -19,8 +19,15 @@ namespace Aftertime.Extensions.Reflection
                 ?? throw new ArgumentNullException(nameof(eventInfo));
         }
 
+        /// <summary>
+        /// Gets the non-annotated counterpart of this annotated event.
+        /// </summary>
         public EventInfo EventInfo { get; set; }
 
+        /// <summary>
+        /// Gets the <see cref="AnnotatedEventInfo{TAnnotation}.EventInfo"/> object as <see cref="MemberInfo"/>. 
+        /// Inherited from <see cref="AnnotatedMemberInfoSkeleton{TAnnotation}"/>.
+        /// </summary>
         public override MemberInfo MemberInfo => EventInfo;
 
         private readonly EventInfo _eventInfo;

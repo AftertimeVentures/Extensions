@@ -17,8 +17,15 @@ namespace Aftertime.Extensions.Reflection
                 ?? throw new ArgumentNullException(nameof(methodInfo));
         }
 
+        /// <summary>
+        /// Gets the non-annotated counterpart of this annotated method.
+        /// </summary>
         public MethodInfo MethodInfo => _methodInfo;
 
+        /// <summary>
+        /// Gets the <see cref="AnnotatedMethodInfo{TAnnotation}.MethodInfo"/> object as <see cref="MemberInfo"/>. 
+        /// Inherited from <see cref="AnnotatedMemberInfoSkeleton{TAnnotation}"/>.
+        /// </summary>
         public override MemberInfo MemberInfo => MethodInfo;
 
         private readonly MethodInfo _methodInfo;

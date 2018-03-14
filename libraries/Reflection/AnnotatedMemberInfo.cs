@@ -19,6 +19,9 @@ namespace Aftertime.Extensions.Reflection
                 ?? throw new ArgumentNullException(nameof(memberInfo));
         }
 
+        /// <summary>
+        /// The non-annotated counterpart of this annotated member.
+        /// </summary>
         public override MemberInfo MemberInfo => MemberInfo;
 
         private readonly MemberInfo _memberInfo;
